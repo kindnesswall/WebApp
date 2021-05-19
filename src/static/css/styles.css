@@ -218,6 +218,20 @@ margin: auto;
 .divider-border{
 	border-bottom: 3px solid #d437a5 !important;
 }
+.login-input:focus{
+	outline: none !important;
+}
+.login-input:active{
+	outline: none !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
 
 
 

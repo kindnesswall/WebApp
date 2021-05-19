@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import MainRouter from './MainRouter';
 
 import "bootstrap/dist/css/bootstrap.min.css";
-// import "bootstrap/dist/js/bootstrap.min.js";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import  './static/css/styles.css';
 
