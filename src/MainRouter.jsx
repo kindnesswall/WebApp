@@ -20,7 +20,7 @@ const MainRouter = () => {
   return (
     <Switch>
       <Route path="/admin" render={() => <MainAdmin />} ></Route>
-      {/* <Route path="/user/userPannel" render={() => <UserPannel />} ></Route> */}
+      <Route path="/user/userPannel" render={() => <UserPannel />} ></Route>
       <Route path="/user/login/verify" render={() => <Verify mobileNumber={phoneNumber} />} ></Route>
       <Route path="/user/login" render={() => <Login callbackToMainRouter={mobileNumberCallback} />} ></Route>
       <Route path="/" exact render={() => <Home />} ></Route>

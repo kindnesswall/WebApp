@@ -52,7 +52,7 @@ const Login = ({ callbackToMainRouter }) => {
                                         <i class="fa fa-mobile fa-2x" aria-hidden="true"></i>
                                     </div>
                                     <div className="d-flex align-items-center flex-column color-theme">
-                                        <button type="submit" className="btn btn-outline text-white background-theme w-100 my-2" >ورود به دیوار مهربانی </button>
+                                        <button type="submit" className="btn btn-outline text-white background-theme w-100 my-2" >ورود یا ثبت‌نام در دیوار مهربانی </button>
                                     </div>
 
                                 </form>

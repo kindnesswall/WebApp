@@ -1,6 +1,6 @@
-import axios from 'axios';
-import React, { Fragment } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import HttpService from '../../service/HttpService';
 import Logo from '../../static/images/Logo.png'
 
@@ -8,16 +8,16 @@ import Logo from '../../static/images/Logo.png'
 const Verify = ({ mobileNumber }) => {
 
     const history = useHistory();
-
+    const phoneNumber = `+98${parseInt(mobileNumber)}`;
     const login = async (e) => {
 
         e.preventDefault()
 
-        const otpCode = document.getElementById("otpCode").value;
-
+        const activationCode = document.getElementById("otpCode").value;
+        console.log('phoneNumber', phoneNumber);
         const body = {
-            mobileNumber,
-            otpCode
+            phoneNumber,
+            activationCode
         }
         try {
             const { status } = await HttpService.post("/api/v1/login", body)
@@ -25,7 +25,7 @@ const Verify = ({ mobileNumber }) => {
                 history.push('/user/userPannel')
 
             } else if (status === 406) {
-
+                toast.error('کد تایید معتبر نیست')
             }
         } catch (ex) { }
     }
@@ -40,11 +40,11 @@ const Verify = ({ mobileNumber }) => {
                         <form className="form-group" onSubmit={(e) => login(e)}>
 
                             <div className="d-flex flex-column align-items-start">
-                                <p className='h4 text-center color-theme mt-1 mb-4'>کد تایید را وارد نمایید</p>
-                                <p className="font-weight-lighter text-right font-smaller font">کد تایید به شماره موبایل {mobileNumber} ارسال گردید</p>
+                                <p className='h4 text-center color-theme mt-1 mb-3'>تائید شماره موبایل</p>
+                                <p className="font-weight-lighter text-right verify-font-size">کد پنج رقمی پیامک شده به شماره موبایل {mobileNumber} را وارد کنید</p>
                             </div>
 
-                            <input type="text" className="form-control mb-1 mt-1" id="otpCode" required="required" placeholder=" کد تایید " name="otpCode" />
+                            <input type="text" className="form-control border-0 login-input mb-1 mt-2" id="otpCode" required="required" placeholder=" کد تائید " name="otpCode" />
                             <div className="d-flex align-items-center flex-column color-theme">
                                 <button type="submit" className="btn btn-outline text-white background-theme w-100 my-2 mb-5" >ارسال </button>
                             </div>
