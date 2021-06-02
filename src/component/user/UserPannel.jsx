@@ -1,4 +1,4 @@
-import MainNav from "../commen/MainNav"
+import MainNav from "../commen/Navbar"
 
 
 const UserPannel = () => {

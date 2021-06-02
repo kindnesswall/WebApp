@@ -251,8 +251,96 @@ font-size: 12px;
 background-color: #eee;
 }
 
+.kindness-btn{
+	background-color:#fff;
+    color: #d437a5;
+    border: 1px solid #d437a5;
+    border-radius: 25px;
+}
+.kindness-btn:hover{
+	background: #94126d;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+}
+
+.logo-max-dim{
+	max-width: 70px;
+    max-height: 58px;
+}
+
+.max-w-h-9rem{
+	max-height: 4rem;
+    max-width: 4rem;
+}
+
+.top-header{
+	margin: 0;
+	margin-right: 2rem;
+	list-style-type: none;
+}
+
+.navbar-box-shadow{
+	box-shadow: 0 3px 4px 0 rgb(0 0 0 / 28%);
+	border-bottom: 1px solid #e1e1e1;
+}
+
+.NavLink-color{
+	color: #757579;
+}
+
+nav>div>div>ul:hover{
+	height: 4rem !important;
+}
+
+nav>div>div>ul>a:hover{
+	height: 100%;
+	color: #d437a5;
+	border-bottom: 3px solid #d437a5 !important;
+}
+
+nav>div>div>ul>a{
+    padding: 20px 0 20px 0;
+}
+
+.font-size-075rem{
+	font-size: 0.75rem;
+}
+
+.font-size-1rem{
+	font-size: 1rem;
+}
+
+.fa-user-hover:hover{
+	color: #d437a5 !important;
+}
+
 @media (max-width:768px) { 
 	.login-border{
 	border-radius:30px 30px 30px 30px ;
+	}
+ }
+
+ @media (max-width:768px) { 
+.navbar-box-shadow{
+	padding: 0 !important;
+}
+ }
+
+ @media (max-width:501px) { 
+  .kindness-btn{
+	display: none;
+   }
+ }
+
+ @media (max-width:501px) { 
+	.font-size-1rem{
+		font-size: 0.8rem;
+	}
+ }
+
+ @media (max-width:501px) { 
+	.font-size-075rem{
+		font-size: 0.6rem;
 	}
  }
