@@ -33,10 +33,10 @@ const Home = () => {
 
                         <div className="col-3 d-flex border rounded m-2">
                             <div className="d-flex flex-column">
-                                <h5>{a.title}</h5>
-                                <p><i className="fa fa-map-marker fa color-theme" aria-hidden="true"></i><span className="mx-1">{a.cityName}، {a.provinceName} | </span></p>
+                                <h5 className="m-3">{a.title}</h5>
+                                <p className="mx-3"><i className="fa fa-map-marker fa color-theme" aria-hidden="true"></i><span className="mx-1">{a.cityName}، {a.provinceName} | </span></p>
                             </div>
-                            <img src="" alt="" />
+                            <img src={a.giftImages} className="max-width-gift-image flex-grow-1 rounded my-2" alt="هدیه" />
 
                         </div>
 

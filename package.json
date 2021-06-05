@@ -53,5 +53,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://dev.kindnesswand.com:80"
+  "proxy": "https://dev.kindnesswand.com:443"
 }

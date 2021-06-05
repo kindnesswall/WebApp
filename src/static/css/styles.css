@@ -315,6 +315,10 @@ nav>div>div>ul>a{
 	color: #d437a5 !important;
 }
 
+.max-width-gift-image{
+max-width: 120px;
+}
+
 @media (max-width:768px) { 
 	.login-border{
 	border-radius:30px 30px 30px 30px ;
