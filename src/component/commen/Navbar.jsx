@@ -22,7 +22,7 @@ const Navbar = () => {
                     <ul className="d-none d-md-flex top-header">
                         {/* <NavLink activeClassName="color-theme" className="mx-2 cursor-pointer text-decoration-none NavLink-color" to="/">صفحه اصلی</NavLink> */}
                         <NavLink activeClassName="color-theme" className="mx-2 cursor-pointer text-decoration-none NavLink-color" to="/user/login">خیریه </NavLink>
-                        <NavLink activeClassName="color-theme" className="mx-2 cursor-pointer text-decoration-none NavLink-color" to="/user/login">گفتگو </NavLink>
+                        <NavLink activeClassName="color-theme" className="mx-2 cursor-pointer text-decoration-none NavLink-color" to="/user/register">گفتگو </NavLink>
                         <NavLink activeClassName="color-theme" className="mx-2 cursor-pointer text-decoration-none NavLink-color" to="">بیشتر</NavLink>
                         <NavLink activeClassName="color-theme" className="mx-2 cursor-pointer text-decoration-none NavLink-color" to="">درباره ما</NavLink>
                     </ul>

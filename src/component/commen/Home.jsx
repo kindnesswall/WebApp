@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import HttpService from '../../service/HttpService';
-import Logo from '../../static/images/Logo.png'
 import Navbar from './Navbar';
 
 const Home = () => {
 
     const [gifts, setGifts] = useState([])
+    const [beforeId, setBeforeId] = useState(null)
 
     const getGifts = async () => {
+
+        let count = 12;
+        // let beforeId = (gifts.length > 0) ? gifts[count - 1].id : null;
+        let body = { countryId: 103, count, beforeId }
         try {
-            let { status, data } = await HttpService.post("/api/v1/gifts", { countryId: 103 })
+            let { status, data } = await HttpService.post("/api/v1/gifts", body)
             if (status === 200) {
                 setGifts(data)
                 console.log(data);
@@ -20,7 +23,7 @@ const Home = () => {
 
     useEffect(() => {
         getGifts()
-    }, [])
+    }, [beforeId])
 
     return (
         <div>
@@ -41,18 +44,25 @@ const Home = () => {
                         </div>
 
                     ) : null}
+
+                    {gifts && gifts.length === 12 ?
+                        <p className='cursor-pointer text-info font-weight-bolder mr-3 ml-auto' onClick={() => setBeforeId(gifts[gifts.length - 1].id)}>صفحه بعدی</p> : null}
+                    {gifts && gifts.length > 1 ?
+                        <p className='cursor-pointer text-info font-weight-bolder' onClick={() => setBeforeId(gifts[gifts.length + 1].id)}>صفحه قبلی</p> : null}
+
                 </div>
             </div>
 
-            {/* <div className="kindness-bg vh-100 d-flex flex-column justify-content-center align-items-center">
+        </div>
+    );
+}
+
+export default Home;
+
+{/* <div className="kindness-bg vh-100 d-flex flex-column justify-content-center align-items-center">
                 <h2 className="color-theme font-weight-boldern divider-border">دیوار مهربانی</h2>
               جهت ورود کلیک نمایید
                 <Link to='/user/login'>
                     <img className="cursor-pointer mt-3 boxSha" src={Logo} alt="لوگوی دیوار مهربانی" />
                 </Link>
             </div> */}
-        </div>
-    );
-}
-
-export default Home;
