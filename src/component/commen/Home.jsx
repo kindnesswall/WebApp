@@ -1,28 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import HttpService from '../../service/HttpService';
+import MainContext from '../context/MainContext';
 import Navbar from './Navbar';
 
 const Home = () => {
 
     const [gifts, setGifts] = useState([])
     const [beforeId, setBeforeId] = useState(null)
+    const { setLoadingDialog } = useContext(MainContext)
+    const prevBeforeId = useRef()
 
     const getGifts = async () => {
 
-        let count = 12;
         // let beforeId = (gifts.length > 0) ? gifts[count - 1].id : null;
+        let count = 12;
         let body = { countryId: 103, count, beforeId }
+        setLoadingDialog(true)
         try {
             let { status, data } = await HttpService.post("/api/v1/gifts", body)
             if (status === 200) {
                 setGifts(data)
-                console.log(data);
             }
         } catch (error) { }
+        setLoadingDialog(false)
+    }
+
+    const handlePrevPage = () => {
+        setBeforeId(prevBeforeId.current)
+    }
+
+    const handleNextPage = () => {
+        console.log('beforeId befor save to ref = ', beforeId);
+        prevBeforeId.current = beforeId
+        setBeforeId(gifts[gifts.length - 1].id)
     }
 
     useEffect(() => {
-        getGifts()
+        getGifts();
     }, [beforeId])
 
     return (
@@ -46,9 +60,9 @@ const Home = () => {
                     ) : null}
 
                     {gifts && gifts.length === 12 ?
-                        <p className='cursor-pointer text-info font-weight-bolder mr-3 ml-auto' onClick={() => setBeforeId(gifts[gifts.length - 1].id)}>صفحه بعدی</p> : null}
+                        <p className='cursor-pointer text-info font-weight-bolder mr-3 ml-auto' onClick={handleNextPage}>صفحه بعدی</p> : null}
                     {gifts && gifts.length > 1 ?
-                        <p className='cursor-pointer text-info font-weight-bolder' onClick={() => setBeforeId(gifts[gifts.length + 1].id)}>صفحه قبلی</p> : null}
+                        <p className='cursor-pointer text-info font-weight-bolder' onClick={handlePrevPage}>صفحه قبلی</p> : null}
 
                 </div>
             </div>

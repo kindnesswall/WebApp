@@ -5,6 +5,7 @@ import MainAdmin from './component/admin/MainAdmin';
 import Register from './component/login/Register';
 import Login from './component/login/Login';
 import UserPannel from './component/user/UserPannel';
+import ContextComponent from './component/context/ContextComponent';
 
 
 
@@ -17,6 +18,7 @@ const MainRouter = () => {
   }
 
   return (
+    <ContextComponent>
     <Switch>
       <Route path="/admin" render={() => <MainAdmin />} ></Route>
       <Route path="/user/userPannel" render={() => <UserPannel />} ></Route>
@@ -24,6 +26,7 @@ const MainRouter = () => {
       <Route path="/user/register" render={() => <Register callbackToMainRouter={mobileNumberCallback} />} ></Route>
       <Route path="/" exact render={() => <Home />} ></Route>
     </Switch>
+    </ContextComponent>
   );
 };
 
