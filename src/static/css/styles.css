@@ -316,7 +316,11 @@ nav>div>div>ul>a{
 }
 
 .max-width-gift-image{
-max-width: 120px;
+max-width: 50% !important;
+}
+
+#main-search{
+	outline: none;
 }
 
 @media (max-width:768px) { 
@@ -346,5 +350,12 @@ max-width: 120px;
  @media (max-width:501px) { 
 	.font-size-075rem{
 		font-size: 0.6rem;
+	}
+ }
+
+ @media (min-width: 576px){
+	.home{
+		max-width: none !important;
+		/* width:max-content !important; */
 	}
  }
