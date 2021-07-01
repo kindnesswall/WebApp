@@ -5,13 +5,10 @@ import Navbar from './Navbar';
 
 const Home = () => {
 
-    const [gifts, setGifts] = useState([])
-    const [arrayId, setArrayId] = useState([null])
-    const [beforeId, setBeforeId] = useState(null)
     const { setLoadingDialog } = useContext(MainContext)
-    const prevBeforeId = useRef(null)
-    // var arrayId = [null]
-    console.log("arrayId = ", arrayId);
+    const [gifts, setGifts] = useState([])
+    const [giftsIds, setGiftsIds] = useState([null])
+    const [beforeId, setBeforeId] = useState(null)
 
     const getGifts = async () => {
 
@@ -23,27 +20,24 @@ const Home = () => {
             let { status, data } = await HttpService.post("/api/v1/gifts", body)
             if (status === 200) {
                 setGifts(data)
-                // prevBeforeId.current = data[data.length-1].id
             }
         } catch (error) { }
         setLoadingDialog(false)
     }
 
     const handleNextPage = () => {
-        setBeforeId(gifts[gifts.length - 1].id)
-        prevBeforeId.current = beforeId
-        let copy = [...arrayId]
-        copy.push(gifts[gifts.length - 1].id)
-        setArrayId(copy)
-        console.log('beforeId befor save to ref = ', beforeId);
+        setBeforeId(gifts[gifts.length - 1]?.id)
+        let copy = [...giftsIds]
+        copy.push(gifts[gifts.length - 1]?.id)
+        console.log(copy);
+        setGiftsIds(copy)
     }
 
     const handlePrevPage = () => {
-        console.log('prevBeforeId.current', prevBeforeId.current);
-        setBeforeId(prevBeforeId.current)
-        prevBeforeId.current = arrayId[arrayId.length - 12]
-        // setBeforeId(()=>arrayId.find(a => a === gifts. ))
-
+        let copy = [...giftsIds]
+        copy.pop(gifts[gifts.length - 1]?.id)
+        setGiftsIds(copy)
+        setBeforeId(copy[copy.length - 1])
     }
 
     useEffect(() => {
@@ -51,7 +45,7 @@ const Home = () => {
     }, [beforeId])
 
     return (
-        <div>
+        <div className='mb-5'>
             <Navbar />
 
             <div className="container home mt-5">
@@ -63,14 +57,14 @@ const Home = () => {
                     </div>
                 </form>
 
-                <div className="row justify-content-center">
+                <div className="row justify-content-center align-items-center">
 
                     {gifts && gifts.length > 0 ? gifts.map(a =>
 
                         <div className="col-sm-4 col-lg-3 d-flex border rounded m-2 justify-content-between">
                             <div className="d-flex flex-column">
                                 <h5 className="m-3">{a.title}</h5>
-                                <p className="mx-3"><i className="fa fa-map-marker fa color-theme" aria-hidden="true"></i><span className="mx-1">{a.cityName}، {a.provinceName} | </span></p>
+                                <p className="mx-3"><i className="fa fa-map-marker fa color-theme mr-5" aria-hidden="true"></i><span className="mx-1">{a.cityName}، {a.provinceName} | </span></p>
                             </div>
                             <img src={a.giftImages} className="max-width-gift-image rounded my-2" alt="هدیه" />
 
@@ -78,12 +72,15 @@ const Home = () => {
 
                     ) : null}
 
-                    {gifts && gifts.length === 12 ?
-                        <p className='cursor-pointer text-info font-weight-bolder mr-3 ml-auto' onClick={handleNextPage}>صفحه بعدی</p> : null}
-                    {gifts && gifts.length > 1 ?
-                        <p className='cursor-pointer text-info font-weight-bolder' onClick={handlePrevPage}>صفحه قبلی</p> : null}
-
                 </div>
+
+                <div className="d-flex justify-content-between">
+                    {gifts && gifts.length === 12 ?
+                        <div className='cursor-pointer' onClick={handleNextPage}><i className="fa fa-chevron-right color-theme p-2 mr-3em rounded next-page-hover" aria-hidden="true"></i></div> : <div className='p-2 mr-3em rounded next-page-hover'></div> }
+                    {gifts && gifts.length > 1 ?
+                        <div className='cursor-pointer' onClick={handlePrevPage}><i className="fa fa-chevron-left color-theme p-2 ml-3em rounded next-page-hover" aria-hidden="true"></i></div> : null}
+                </div>
+
             </div>
 
         </div>

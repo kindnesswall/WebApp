@@ -35,7 +35,7 @@ const Navbar = () => {
                         <p className="my-0 font-size-1rem fa-user-hover">مرتضی مهدوی</p>
                         <i className="fa fa-user-o color-theme mx-2" aria-hidden="true"></i>
                     </div>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <div className="dropdown-item text-center cursor-pointer NavLink-color" onClick={true} >
                             خروج از حساب
                        </div>

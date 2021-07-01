@@ -50,7 +50,7 @@ const Register = ({ callbackToMainRouter }) => {
 
                                     <div className="d-flex form-control">
                                         <input type="text" className="border-0 px-0 login-input flex-grow-1 bg-gray" id="mobileNumber" required="required" placeholder=" شماره موبایل " name="mobileNumber" />
-                                        <i class="fa fa-mobile fa-2x" aria-hidden="true"></i>
+                                        <i className="fa fa-mobile fa-2x" aria-hidden="true"></i>
                                     </div>
                                     <div className="d-flex align-items-center flex-column color-theme">
                                         <button type="submit" className="btn btn-outline text-white background-theme w-100 my-2" >ورود یا ثبت‌نام در دیوار مهربانی </button>

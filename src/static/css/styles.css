@@ -105,7 +105,18 @@ p,h1,h2,h3,h4,h5,h6{
   color: white;
 }
 
+.mr-3em{
+	margin-right: 5em !important;
+}
 
+.ml-3em{
+	margin-left: 5em !important;
+}
+
+.next-page-hover:hover{
+color: white !important;
+background-color: #d437a5 ;
+}
 
 .table tbody tr td input {
   border: none !important;
