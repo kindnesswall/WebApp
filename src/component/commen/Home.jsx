@@ -50,20 +50,22 @@ const Home = () => {
 
             <div className="container home mt-5">
 
-                <form className="w-100 d-flex justify-content-center">
-                    <div className="d-flex justify-content-between align-items-center border">
-                        <input id="main-search" className="border-0" placeholder="جستجو" type="text" />
-                        <i className="fa fa-search" style={{ color: "#536172" }} aria-hidden="true"></i>
-                    </div>
-                </form>
+                <div className="col-6 mx-auto">
+                    <form className="w-100 d-flex justify-content-center mb-3 px-5">
+                        <div className="d-flex justify-content-between align-items-center border rounded-border p-2 w-md-100">
+                            <input id="main-search" className="border-0 text-success" placeholder="جستجو" type="text" />
+                            <i className="fa fa-search cursor-pointer text-success" aria-hidden="true"></i>
+                        </div>
+                    </form>
+                </div>
 
                 <div className="row justify-content-center align-items-center">
 
                     {gifts && gifts.length > 0 ? gifts.map(a =>
 
-                        <div className="col-sm-4 col-lg-3 d-flex border rounded m-2 justify-content-between">
+                        <div className="col-sm-4 col-lg-3 d-flex border border-none rounded m-2 justify-content-between">
                             <div className="d-flex flex-column">
-                                <h5 className="m-3">{a.title}</h5>
+                                <h6 className="m-3">{a.title}</h6>
                                 <p className="mx-3"><i className="fa fa-map-marker fa color-theme mr-5" aria-hidden="true"></i><span className="mx-1">{a.cityName}، {a.provinceName} | </span></p>
                             </div>
                             <img src={a.giftImages} className="max-width-gift-image rounded my-2" alt="هدیه" />
@@ -76,7 +78,7 @@ const Home = () => {
 
                 <div className="d-flex justify-content-between">
                     {gifts && gifts.length === 12 ?
-                        <div className='cursor-pointer' onClick={handleNextPage}><i className="fa fa-chevron-right color-theme p-2 mr-3em rounded next-page-hover" aria-hidden="true"></i></div> : <div className='p-2 mr-3em rounded next-page-hover'></div> }
+                        <div className='cursor-pointer' onClick={handleNextPage}><i className="fa fa-chevron-right color-theme p-2 mr-3em rounded next-page-hover" aria-hidden="true"></i></div> : <div className='p-2 mr-3em rounded next-page-hover'></div>}
                     {gifts && gifts.length > 1 ?
                         <div className='cursor-pointer' onClick={handlePrevPage}><i className="fa fa-chevron-left color-theme p-2 ml-3em rounded next-page-hover" aria-hidden="true"></i></div> : null}
                 </div>
