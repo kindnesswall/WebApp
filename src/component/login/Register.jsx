@@ -48,9 +48,9 @@ const Register = ({ callbackToMainRouter }) => {
                                         <p className='h4 text-center color-theme mx-2'> ورود  / ثبت‌نام  </p>
                                     </div>
 
-                                    <div className="d-flex form-control">
-                                        <input type="text" className="border-0 px-0 login-input flex-grow-1 bg-gray" id="mobileNumber" required="required" placeholder=" شماره موبایل " name="mobileNumber" />
-                                        <i className="fa fa-mobile fa-2x" aria-hidden="true"></i>
+                                    <div className="d-flex justify-content-center form-control">
+                                        <i className="fa fa-mobile fa-2x flex-grow-1" aria-hidden="true"></i>
+                                        <input type="text" className="border-0 px-0 login-input direction-initial" id="mobileNumber" required="required" placeholder="09********" name="mobileNumber" />
                                     </div>
                                     <div className="d-flex align-items-center flex-column color-theme">
                                         <button type="submit" className="btn btn-outline text-white background-theme w-100 my-2" >ورود یا ثبت‌نام در دیوار مهربانی </button>

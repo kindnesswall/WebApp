@@ -1,11 +1,14 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import logo from '../../static/images/Logo-circle.png'
 
 const Navbar = () => {
 
-    const handleCreateGift = () => {
+    const history = useHistory()
 
+    const handleGoToCreateGift = () => {
+
+        history.push('/user/register')
     }
 
     return (
@@ -30,15 +33,27 @@ const Navbar = () => {
 
 
                 <div className="dropdown d-flex align-items-center">
-                    <button className="kindness-btn py-1 px-2 mx-3" onClick={handleCreateGift} > ثبت هدیه </button>
-                    <div className="d-flex align-items-baseline cursor-pointer dropdown-toggle fa-user-hover" aria-haspopup="true" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
-                        <p className="my-0 font-size-1rem fa-user-hover">مرتضی مهدوی</p>
-                        <i className="fa fa-user-o color-theme mx-2" aria-hidden="true"></i>
+                    <button className="kindness-btn py-1 px-2 mx-3" onClick={handleGoToCreateGift} > ثبت هدیه </button>
+                    <div className="d-flex align-items-baseline cursor-pointer fa-user-hover" aria-haspopup="true" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
+                        <i className="fa fa-user-o mx-2" aria-hidden="true"></i>
+                        <p className="my-0 font-size-1rem fa-user-hover">دیوار من</p>
                     </div>
                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <div className="dropdown-item text-center cursor-pointer NavLink-color" onClick={true} >
-                            خروج از حساب
-                       </div>
+
+                        <div className="dropdown-item text-right cursor-pointer NavLink-color" onClick={true} >
+                            <div className=' d-flex align-items-center'>
+                                <i className="fa fa-sign-out" aria-hidden="true"></i>
+                                <span className='mx-2'>خروج از حساب</span>
+                            </div>
+                        </div>
+
+                        <div className="dropdown-item text-right cursor-pointer NavLink-color">
+                            <div className=' d-flex align-items-center' onClick={() => history.push('/user/register')}>
+                                <i className="fa fa-sign-in" aria-hidden="true"></i>
+                                <span className='mx-2'> ورود </span>
+                            </div>
+                        </div>
+
                     </ul>
                 </div>
 

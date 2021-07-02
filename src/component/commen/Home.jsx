@@ -50,12 +50,10 @@ const Home = () => {
 
             <div className="container home mt-5">
 
-                <div className="col-6 mx-auto">
-                    <form className="w-100 d-flex justify-content-center mb-3 px-5">
-                        <div className="d-flex justify-content-between align-items-center border rounded-border p-2 w-md-100">
-                            <input id="main-search" className="border-0 text-success" placeholder="جستجو" type="text" />
-                            <i className="fa fa-search cursor-pointer text-success" aria-hidden="true"></i>
-                        </div>
+                <div className="col-6 mx-auto mb-2 max-width-search-box">
+                    <form className="d-flex align-items-center p-2 border rounded-border search-box-focus">
+                        <input id='main-search' className="text-success border-0 w-100" required="required" type="text" placeholder="جستجو ..." />
+                        <i className="fa fa-search text-success cursor-pointer" ></i>
                     </form>
                 </div>
 
