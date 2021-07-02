@@ -201,7 +201,6 @@ input:-webkit-autofill:active  {
 }
 
 .container-image-login{
-	/* border: 1px solid #357c3b !important; */
 	background: #dce0eba8;
 	border-radius: 0 30px 30px 0;
 }
