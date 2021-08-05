@@ -50,21 +50,21 @@ const Home = () => {
 
             <div className="container home mt-5">
 
-                <div className="col-6 mx-auto mb-2 max-width-search-box">
+                {/* <div className="col-6 mx-auto mb-2 max-width-search-box">
                     <form className="d-flex align-items-center p-2 border rounded-border search-box-focus">
                         <input id='main-search' className="text-success border-0 w-100" required="required" type="text" placeholder="جستجو ..." />
                         <i className="fa fa-search text-success cursor-pointer" ></i>
                     </form>
-                </div>
+                </div> */}
 
                 <div className="row justify-content-center align-items-center">
 
                     {gifts && gifts.length > 0 ? gifts.map(a =>
 
-                        <div className="col-sm-4 col-lg-3 d-flex border border-none rounded m-2 justify-content-between">
+                        <div className="col-sm-4 col-lg-3 d-flex border rounded justify-content-between m-sm-2">
                             <div className="d-flex flex-column">
-                                <h6 className="m-3">{a.title}</h6>
-                                <p className="mx-3"><i className="fa fa-map-marker fa color-theme mr-5" aria-hidden="true"></i><span className="mx-1">{a.cityName}، {a.provinceName} | </span></p>
+                                <h6 className="m-3 post-card__title">{a.title}</h6>
+                                <p className="mx-3"><i className="fa fa-map-marker fa color-theme mr-5" aria-hidden="true"></i><span className="mx-1 font-size-075rem">{a.cityName}، {a.provinceName} | </span></p>
                             </div>
                             <img src={a.giftImages} className="max-width-gift-image rounded my-2" alt="هدیه" />
 

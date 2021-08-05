@@ -24,15 +24,15 @@ const Navbar = () => {
                     </div>
                     <ul className="d-none d-md-flex top-header">
                         {/* <NavLink activeClassName="color-theme" className="mx-2 cursor-pointer text-decoration-none NavLink-color" to="/">صفحه اصلی</NavLink> */}
-                        <NavLink activeClassName="color-theme" className="mx-2 cursor-pointer text-decoration-none NavLink-color" to="/user/login">خیریه </NavLink>
+                        {/* <NavLink activeClassName="color-theme" className="mx-2 cursor-pointer text-decoration-none NavLink-color" to="/user/login">خیریه </NavLink>
                         <NavLink activeClassName="color-theme" className="mx-2 cursor-pointer text-decoration-none NavLink-color" to="/user/register">گفتگو </NavLink>
                         <NavLink activeClassName="color-theme" className="mx-2 cursor-pointer text-decoration-none NavLink-color" to="">بیشتر</NavLink>
-                        <NavLink activeClassName="color-theme" className="mx-2 cursor-pointer text-decoration-none NavLink-color" to="">درباره ما</NavLink>
+                        <NavLink activeClassName="color-theme" className="mx-2 cursor-pointer text-decoration-none NavLink-color" to="">درباره ما</NavLink> */}
                     </ul>
                 </div>
 
 
-                <div className="dropdown d-flex align-items-center">
+                {/* <div className="dropdown d-flex align-items-center">
                     <button className="kindness-btn py-1 px-2 mx-3" onClick={handleGoToCreateGift} > ثبت هدیه </button>
                     <div className="d-flex align-items-baseline cursor-pointer fa-user-hover" aria-haspopup="true" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
                         <i className="fa fa-user-o mx-2" aria-hidden="true"></i>
@@ -55,7 +55,7 @@ const Navbar = () => {
                         </div>
 
                     </ul>
-                </div>
+                </div> */}
 
             </div>
         </nav>
