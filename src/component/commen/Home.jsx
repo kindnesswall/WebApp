@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import HttpService from '../../service/HttpService';
 import MainContext from '../context/MainContext';
 import Navbar from './Navbar';
@@ -9,6 +10,8 @@ const Home = () => {
     const [gifts, setGifts] = useState([])
     const [giftsIds, setGiftsIds] = useState([null])
     const [beforeId, setBeforeId] = useState(null)
+
+    const history = useHistory()
 
     const getGifts = async () => {
 
@@ -61,12 +64,16 @@ const Home = () => {
 
                     {gifts && gifts.length > 0 ? gifts.map(a =>
 
-                        <div className="col-sm-4 col-lg-3 d-flex border rounded justify-content-between m-sm-2">
+                        <div className="col-sm-4 col-lg-3 d-flex border rounded justify-content-between m-sm-2 cursor-pointer" onClick={() => history.push(`/gifts/${a.id}`)}>
                             <div className="d-flex flex-column">
                                 <h6 className="m-3 post-card__title">{a.title}</h6>
                                 <p className="mx-3"><i className="fa fa-map-marker fa color-theme mr-5" aria-hidden="true"></i><span className="mx-1 font-size-075rem">{a.cityName}، {a.provinceName} | </span></p>
                             </div>
-                            <img src={a.giftImages} className="max-width-gift-image rounded my-2" alt="هدیه" />
+                            {a.giftImages?.length > 1 ?
+                                <img src={a.giftImages[0]} className="max-width-gift-image rounded my-2" alt="هدیه" />
+                                :
+                                <img src={a.giftImages} className="max-width-gift-image rounded my-2" alt="هدیه" />
+                            }
 
                         </div>
 

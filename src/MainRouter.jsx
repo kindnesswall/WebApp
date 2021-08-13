@@ -5,6 +5,7 @@ import Register from './component/login/Register';
 import Login from './component/login/Login';
 import UserPannel from './component/user/UserPannel';
 import ContextComponent from './component/context/ContextComponent';
+import Gift from './component/gifts/Gift';
 
 
 
@@ -23,6 +24,7 @@ const MainRouter = () => {
       <Route path="/user/userPannel" render={() => <UserPannel />} ></Route>
       <Route path="/user/register/login" render={() => <Login mobileNumber={phoneNumber} />} ></Route>
       <Route path="/user/register" render={() => <Register callbackToMainRouter={mobileNumberCallback} />} ></Route>
+      <Route path="/gifts/:id" render={(props) => <Gift id={props.match.params.id} />} ></Route>
       <Route path="/" exact render={() => <Home />} ></Route>
     </Switch>
     </ContextComponent>
