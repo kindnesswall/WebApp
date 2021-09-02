@@ -150,6 +150,10 @@ background-color: #d437a5 ;
   border-radius: 300px;
 }
 
+.dark-color{
+	color: rgba(0,0,0,.87) !important;
+}
+
 .admin-nav {
   padding: 5px !important;
   margin: 0 !important;

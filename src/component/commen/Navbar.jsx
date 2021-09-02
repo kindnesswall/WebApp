@@ -16,7 +16,7 @@ const Navbar = () => {
             <div className="d-flex justify-content-between align-items-center">
                 <div className="d-flex justify-content-center align-items-center">
                     <div className="d-flex justify-content-center align-items-center cursor-pointer">
-                        <img src={logo} className="max-w-h-9rem" alt="لوگوی داریانو" />
+                        <img src={logo} className="max-w-h-9rem" alt="لوگوی دیوار مهربانی" />
                         <div className="d-flex flex-column">
                             <strong className="font-size-075rem">دیـــــــــوار مهربانی</strong>
                             <strong className="font-size-075rem">kindnesswand.com</strong>
