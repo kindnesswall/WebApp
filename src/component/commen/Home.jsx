@@ -10,6 +10,7 @@ const Home = () => {
     const [gifts, setGifts] = useState([])
     const [giftsIds, setGiftsIds] = useState([null])
     const [beforeId, setBeforeId] = useState(null)
+    const [isPrevPageOn, setIsPrevPageOn] = useState(false)
 
     const history = useHistory()
 
@@ -29,10 +30,10 @@ const Home = () => {
     }
 
     const handleNextPage = () => {
+        setIsPrevPageOn(true)
         setBeforeId(gifts[gifts.length - 1]?.id)
         let copy = [...giftsIds]
         copy.push(gifts[gifts.length - 1]?.id)
-        console.log(copy);
         setGiftsIds(copy)
     }
 
@@ -70,22 +71,21 @@ const Home = () => {
                                 <p className="mx-3"><i className="fa fa-map-marker fa color-theme mr-5" aria-hidden="true"></i><span className="mx-1 font-size-075rem">{a.cityName}، {a.provinceName} | </span></p>
                             </div>
                             {a.giftImages?.length > 1 ?
-                                <img src={a.giftImages[0]} className="max-width-gift-image rounded my-2" alt="هدیه" />
+                                <img ismap src={a.giftImages[0]} className="max-width-gift-image rounded my-2" alt="هدیه" />
                                 :
                                 <img src={a.giftImages} className="max-width-gift-image rounded my-2" alt="هدیه" />
                             }
-
                         </div>
 
                     ) : null}
 
                 </div>
 
-                <div className="d-flex justify-content-between">
+                <div className="d-flex justify-content-center">
                     {gifts && gifts.length === 12 ?
-                        <div className='cursor-pointer' onClick={handleNextPage}><i className="fa fa-chevron-right color-theme p-2 mr-3em rounded next-page-hover" aria-hidden="true"></i></div> : <div className='p-2 mr-3em rounded next-page-hover'></div>}
-                    {gifts && gifts.length > 1 ?
-                        <div className='cursor-pointer' onClick={handlePrevPage}><i className="fa fa-chevron-left color-theme p-2 ml-3em rounded next-page-hover" aria-hidden="true"></i></div> : null}
+                        <div className='cursor-pointer mx-2' onClick={handleNextPage}><i className="fa fa-chevron-right color-theme p-2 rounded next-page-hover" aria-hidden="true"></i></div> : null}
+                    {gifts && gifts.length > 1 && isPrevPageOn ?
+                        <div className='cursor-pointer mx-2' onClick={handlePrevPage}><i className="fa fa-chevron-left color-theme p-2 rounded next-page-hover" aria-hidden="true"></i></div> : null}
                 </div>
 
             </div>

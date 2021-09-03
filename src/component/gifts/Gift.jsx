@@ -33,10 +33,12 @@ const Gift = ({ id }) => {
             <div className='container d-flex justify-content-center mt-5'>
                 <div className="row col-10 justify-content-justify-content-between mt-5">
                     <div className="col-12 col-sm-6">
-                        <div className="d-flex flex-column">
+                        <div className="d-flex flex-column mb-5">
                             <h4 className="dark-color">{gift.title}</h4>
-                            <p className=""><i className="fa fa-map-marker color-theme" aria-hidden="true"></i><span className="mx-1">{gift.cityName}، {gift.provinceName} | </span></p>
+                            <p className=""><i className="fa fa-map-marker fa-2x color-theme" aria-hidden="true"></i><span className="mx-1">{gift.cityName}، {gift.provinceName} | </span></p>
                         </div>
+                        <strong className='dark-color'>توضیحات</strong>
+                        <p className='text-justify'>{gift.description}</p>
                     </div>
                     <div className="col-12 col-sm-6">
                         {gift.giftImages?.length > 1 ?
@@ -44,6 +46,9 @@ const Gift = ({ id }) => {
                             :
                             <img src={gift.giftImages} className="rounded" alt="هدیه" />
                         }
+                        {/* {gift.giftImages?.length === 0 ?
+                            <img src={img} className="rounded" alt="هدیه" />
+                            : null} */}
                         {/* <img className='rounded' src={gift.giftImages.length > 1 ? gift.giftImages : img} alt="" /> */}
                     </div>
                 </div>
