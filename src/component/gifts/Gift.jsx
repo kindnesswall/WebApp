@@ -39,8 +39,9 @@ const Gift = ({ id }) => {
                         </div>
                         <strong className='dark-color'>توضیحات</strong>
                         <p className='text-justify'>{gift.description}</p>
+                        <a className="btn btn-outline-secondary w-100 my-3">درخواست</a>
                     </div>
-                    <div className="col-12 col-sm-6">
+                    <div className="col-12 mb-5 mb-sm-0 col-sm-6">
                         {gift.giftImages?.length > 1 ?
                             <img src={gift.giftImages[0]} className="rounded" alt="هدیه" />
                             :
