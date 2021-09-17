@@ -6,8 +6,8 @@ import loginImage from '../../static/images/login.png'
 import Logo from '../../static/images/Logo.png'
 
 
-const Register = ({ callbackToMainRouter }) => {
-    
+const Register = ({ callbackToMainRouter, setting, giftId, userId }) => {
+
     const history = useHistory();
 
     const register = async (e) => {
@@ -26,7 +26,7 @@ const Register = ({ callbackToMainRouter }) => {
             const { status, headers } = await HttpService.post("/api/v1/register", body)
 
             if (status === 200) {
-                history.push('/user/register/login')
+                history.push(`/user/register/login/${setting}/${giftId}/${userId}`)
             }
 
         } catch (ex) { }
@@ -42,21 +42,21 @@ const Register = ({ callbackToMainRouter }) => {
                     <div className="col-12 col-md-8 d-flex align-items-center login-border boxSha py-5 px-2" >
                         <div className="container d-flex flex-column justify-content-center">
                             <img className="login-logo mb-3 mt-0" src={Logo} alt="لوگوی دیوار مهربانی" />
-                                <form className="form-group" onSubmit={(e) => register(e)}>
-                                    <div className="d-flex align-items-center">
-                                        <i className="fa fa-sign-in color-theme ml-2" style={{ fontSize: "2em" }} aria-hidden="true"></i>
-                                        <p className='h4 text-center color-theme mx-2'> ورود  / ثبت‌نام  </p>
-                                    </div>
+                            <form className="form-group" onSubmit={(e) => register(e)}>
+                                <div className="d-flex align-items-center">
+                                    <i className="fa fa-sign-in color-theme ml-2" style={{ fontSize: "2em" }} aria-hidden="true"></i>
+                                    <p className='h4 text-center color-theme mx-2'> ورود  / ثبت‌نام  </p>
+                                </div>
 
-                                    <div className="d-flex justify-content-center form-control">
-                                        <i className="fa fa-mobile fa-2x text-success flex-grow-1" aria-hidden="true"></i>
-                                        <input type="text" className="border-0 px-0 login-input direction-initial text-success" id="mobileNumber" required="required" placeholder="09********" name="mobileNumber" />
-                                    </div>
-                                    <div className="d-flex align-items-center flex-column color-theme">
-                                        <button type="submit" className="btn btn-outline text-white background-theme w-100 my-2" >ورود یا ثبت‌نام در دیوار مهربانی </button>
-                                    </div>
+                                <div className="d-flex justify-content-center form-control">
+                                    <i className="fa fa-mobile fa-2x text-success flex-grow-1" aria-hidden="true"></i>
+                                    <input type="text" className="border-0 px-0 login-input direction-initial text-success" id="mobileNumber" required="required" placeholder="09********" name="mobileNumber" />
+                                </div>
+                                <div className="d-flex align-items-center flex-column color-theme">
+                                    <button type="submit" className="btn btn-outline text-white background-theme w-100 my-2" >ورود یا ثبت‌نام در دیوار مهربانی </button>
+                                </div>
 
-                                </form>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -1,24 +1,57 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import HttpService from '../../service/HttpService';
 import Navbar from '../commen/Navbar';
 import MainContext from '../context/MainContext';
-import img from '../../static/images/img.png'
+// import img from '../../static/images/img.png'
 
-const Gift = ({ id }) => {
+const Gift = ({ giftId, userId }) => {
 
     const { setLoadingDialog } = useContext(MainContext)
     const [gift, setGift] = useState({})
+    const history = useHistory()
 
     const getGiftById = async () => {
 
         setLoadingDialog(true)
         try {
-            let { status, data } = await HttpService.get(`/api/v1/gifts/${id}`)
+            let { status, data } = await HttpService.get(`/api/v1/gifts/${giftId}`)
             if (status === 200) {
                 setGift(data)
             }
         } catch (error) { }
         setLoadingDialog(false)
+
+    }
+
+    const handleGetPhoneVisibility = async () => {
+
+        setLoadingDialog(true)
+        try {
+            let { status, data } = await HttpService.get(`/api/v1/phone/visibility/setting/${userId}`)
+            if (status === 200) {
+                if (data.setting === 'all') {
+                    const visibilityBtn = document.getElementById('visibility');
+                    visibilityBtn.innerHTML = 'نمایش شماره تلفن'
+                    visibilityBtn.classList.add('bg-success', 'text-white')
+                    setLoadingDialog(false)
+                    visibilityBtn.addEventListener('click', () => {
+                        history.push(`/user/register/${data.setting}/${giftId}/${userId}`)
+                    })
+                } else
+                    if (data.setting === 'charity') {
+                        const visibilityBtn = document.getElementById('visibility');
+                        visibilityBtn.innerHTML = 'بنا به درخواست اهداکننده، تنها خیریه‌ها به شماره دسترسی دارند'
+                        visibilityBtn.style.backgroundColor = 'red';
+                        visibilityBtn.style.color = '#fff';
+                        // visibilityBtn.style.cursor = 'text';
+                        setLoadingDialog(false)
+                        visibilityBtn.addEventListener('click', () => {
+                            history.goBack()
+                        })
+                    }
+            }
+        } catch (error) { }
 
     }
 
@@ -39,7 +72,8 @@ const Gift = ({ id }) => {
                         </div>
                         <strong className='dark-color'>توضیحات</strong>
                         <p className='text-justify'>{gift.description}</p>
-                        <a className="btn btn-outline-secondary w-100 my-3">درخواست</a>
+                        <p className='text-justify' id='phoneNumber'></p>
+                        <a className="btn btn-outline-secondary w-100 my-3" id='visibility' onClick={handleGetPhoneVisibility}>درخواست</a>
                     </div>
                     <div className="col-12 mb-5 mb-sm-0 col-sm-6">
                         {gift.giftImages?.length > 1 ?

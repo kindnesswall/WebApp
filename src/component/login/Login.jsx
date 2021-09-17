@@ -5,7 +5,7 @@ import HttpService from '../../service/HttpService';
 import Logo from '../../static/images/Logo.png'
 
 
-const Login = ({ mobileNumber }) => {
+const Login = ({ mobileNumber, setting, giftId, userId }) => {
 
     const history = useHistory();
     const phoneNumber = `+98${parseInt(mobileNumber)}`;
@@ -14,7 +14,6 @@ const Login = ({ mobileNumber }) => {
         e.preventDefault()
 
         const activationCode = document.getElementById("otpCode").value;
-        console.log('phoneNumber', phoneNumber);
         const body = {
             phoneNumber,
             activationCode
@@ -22,9 +21,11 @@ const Login = ({ mobileNumber }) => {
         try {
             const { status, data } = await HttpService.post("/api/v1/login", body)
             if (status === 200) {
-                history.push('/user/userPannel')
+                if (setting === 'all') {
 
-
+                    // history.goBack()
+                    history.replace(`/gifts/${giftId}/${userId}`)
+                }
             } else if (status === 406) {
                 toast.error('کد تایید معتبر نیست')
             }

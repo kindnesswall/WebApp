@@ -65,7 +65,7 @@ const Home = () => {
 
                     {gifts && gifts.length > 0 ? gifts.map(a =>
 
-                        <div className="col-sm-4 col-lg-3 d-flex border rounded justify-content-between m-sm-2 cursor-pointer" onClick={() => history.push(`/gifts/${a.id}`)}>
+                        <div className="col-sm-4 col-lg-3 d-flex border rounded justify-content-between m-sm-2 cursor-pointer" onClick={() => history.push(`/gifts/${a.id}/${a.userId}`)}>
                             <div className="d-flex flex-column">
                                 <h6 className="m-3 post-card__title">{a.title}</h6>
                                 <p className="mx-3"><i className="fa fa-map-marker fa color-theme mr-5" aria-hidden="true"></i><span className="mx-1 font-size-075rem">{a.cityName}، {a.provinceName} | </span></p>

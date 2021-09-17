@@ -8,7 +8,6 @@ import ContextComponent from './component/context/ContextComponent';
 import Gift from './component/gifts/Gift';
 
 
-
 const MainRouter = () => {
 
   const [phoneNumber, setPhoneNumber] = useState('')
@@ -19,14 +18,15 @@ const MainRouter = () => {
 
   return (
     <ContextComponent>
-    <Switch>
-      {/* <Route path="/admin" render={() => <MainAdmin />} ></Route> */}
-      <Route path="/user/userPannel" render={() => <UserPannel />} ></Route>
-      <Route path="/user/register/login" render={() => <Login mobileNumber={phoneNumber} />} ></Route>
-      <Route path="/user/register" render={() => <Register callbackToMainRouter={mobileNumberCallback} />} ></Route>
-      <Route path="/gifts/:id" render={(props) => <Gift id={props.match.params.id} />} ></Route>
-      <Route path="/" exact render={() => <Home />} ></Route>
-    </Switch>
+      <Switch>
+        {/* <Route path="/admin" render={() => <MainAdmin />} ></Route> */}
+        <Route path="/user/userPannel" render={() => <UserPannel />} ></Route>
+        <Route path="/user/register/login/:setting/:giftId/:userId" render={(props) => <Login setting={props.match.params.setting} giftId={props.match.params.giftId} userId={props.match.params.userId} mobileNumber={phoneNumber} />} ></Route>
+        <Route path="/user/register/:setting/:giftId/:userId" render={(props) => <Register setting={props.match.params.setting}  giftId={props.match.params.giftId} userId={props.match.params.userId} callbackToMainRouter={mobileNumberCallback} />} ></Route>
+        <Route path="/user/register" render={(props) => <Register callbackToMainRouter={mobileNumberCallback} />} ></Route>
+        <Route path="/gifts/:giftId/:userId" render={(props) => <Gift giftId={props.match.params.giftId} userId={props.match.params.userId} />} ></Route>
+        <Route path="/" exact render={() => <Home />} ></Route>
+      </Switch>
     </ContextComponent>
   );
 };
