@@ -9,25 +9,28 @@ const Login = ({ mobileNumber, setting, giftId, userId }) => {
 
     const history = useHistory();
     const phoneNumber = `+98${parseInt(mobileNumber)}`;
+
     const login = async (e) => {
 
         e.preventDefault()
 
         const activationCode = document.getElementById("otpCode").value;
+
         const body = {
             phoneNumber,
             activationCode
         }
+        
         try {
             const { status, data } = await HttpService.post("/api/v1/login", body)
             if (status === 200) {
                 if (setting === 'all') {
-
+                    localStorage.setItem('token', data?.token)
                     // history.goBack()
                     history.replace(`/gifts/${giftId}/${userId}`)
                 }
             } else if (status === 406) {
-                toast.error('کد تایید معتبر نیست')
+                toast.error('کد تایید نامعتبر است!')
             }
         } catch (ex) { }
     }

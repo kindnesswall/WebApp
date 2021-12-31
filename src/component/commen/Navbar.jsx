@@ -7,7 +7,6 @@ const Navbar = () => {
     const history = useHistory()
 
     const handleGoToCreateGift = () => {
-
         history.push('/user/register')
     }
 
@@ -15,7 +14,7 @@ const Navbar = () => {
         <nav className="navbar-box-shadow container-fluid px-5">
             <div className="d-flex justify-content-between align-items-center">
                 <div className="d-flex justify-content-center align-items-center">
-                    <div className="d-flex justify-content-center align-items-center cursor-pointer">
+                    <div className="d-flex justify-content-center align-items-center cursor-pointer" onClick={() => history.push('/')}>
                         <img src={logo} className="max-w-h-9rem" alt="لوگوی دیوار مهربانی" />
                         <div className="d-flex flex-column">
                             <strong className="font-size-075rem">دیـــــــــوار مهربانی</strong>
@@ -32,11 +31,11 @@ const Navbar = () => {
                 </div>
 
 
-                {/* <div className="dropdown d-flex align-items-center">
+                <div className="dropdown d-flex align-items-center">
                     <button className="kindness-btn py-1 px-2 mx-3" onClick={handleGoToCreateGift} > ثبت هدیه </button>
                     <div className="d-flex align-items-baseline cursor-pointer fa-user-hover" aria-haspopup="true" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
                         <i className="fa fa-user-o mx-2" aria-hidden="true"></i>
-                        <p className="my-0 font-size-1rem fa-user-hover">دیوار من</p>
+                        <p className="my-0 font-size-1rem fa-user-hover">دیــوار من</p>
                     </div>
                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 
@@ -55,7 +54,7 @@ const Navbar = () => {
                         </div>
 
                     </ul>
-                </div> */}
+                </div>
 
             </div>
         </nav>

@@ -26,7 +26,7 @@ const Register = ({ callbackToMainRouter, setting, giftId, userId }) => {
             const { status, headers } = await HttpService.post("/api/v1/register", body)
 
             if (status === 200) {
-                history.push(`/user/register/login/${setting}/${giftId}/${userId}`)
+                setting && giftId && userId ? history.push(`/user/register/login/${setting}/${giftId}/${userId}`) : history.push('/user/register/login')
             }
 
         } catch (ex) { }
